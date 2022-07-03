@@ -2,6 +2,8 @@ version: "3.7"
 services:
   vault:
     image: vault:1.8.12
+    environment:
+      - SKIP_SETCAP=true
     volumes:
       - ./vault-init/config.hcl:/config/config.hcl
       - ./vault-data:/vault

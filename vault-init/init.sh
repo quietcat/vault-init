@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 VAULT_URL_DEFAULT=http://vault:8200/v1
 VAULT_URL="${VAULT_URL:-$VAULT_URL_DEFAULT}"
@@ -6,7 +6,7 @@ VAULT_URL="${VAULT_URL:-$VAULT_URL_DEFAULT}"
 INITIALIZED=$(curl -s $VAULT_URL/sys/init | jq .initialized)
 KEYS_FILE="/vault-data/keys.json"
 
-if [ $INITIALIZED = false ]; then
+if [ "$INITIALIZED" = "false" ]; then
     echo Initializing vault
     INIT_DATA=$(curl -s --data '{"secret_shares":1,"secret_threshold":1}' $VAULT_URL/sys/init)
     echo -n "$INIT_DATA" > $KEYS_FILE

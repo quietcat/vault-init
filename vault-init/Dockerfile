@@ -1,7 +1,7 @@
-FROM vault:1.8.12
+FROM bash:5.1
 
 RUN apk update \
-    && apk add bash curl jq
+    && apk add curl jq
 
 COPY ./init.sh /init.sh
 CMD /init.sh
