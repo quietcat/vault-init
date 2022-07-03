@@ -4,3 +4,4 @@ RUN apk update \
     && apk add bash curl jq
 
 COPY ./init.sh /init.sh
+CMD /init.sh
