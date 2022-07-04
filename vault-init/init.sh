@@ -22,7 +22,7 @@ echo Unsealing vault
 unseal_data="{\"key\":\"$UNSEAL_KEY\"}"
 UNSEAL_RESULT=$(curl -s --data "$unseal_data" $VAULT_URL/sys/unseal)
 
-if [ $INITIALIZED = false ]; then
+if [ "$INITIALIZED" = "false" ]; then
     echo Create secret store
     auth_header="X-Vault-Token: $ROOT_TOKEN"
     curl --header "$auth_header" --data '{"type":"kv","description":"Secret"}' $VAULT_URL/sys/mounts/secret
