@@ -1,6 +1,6 @@
 # vault-init
 ## Rationale
-[Hashicorp Vault](https://www.vaultproject.io/) has a development mode which is memory-only, which does not allow retaining vault data over container restarts. This can make the development flow difficult, especially in situations where the store information is updated or added by differnt components during multi-steop initializtion.
+[Hashicorp Vault](https://www.vaultproject.io/) has a development mode which is memory-only, which does not allow retaining vault data over container restarts. This can make the development flow difficult, especially in situations where the store information is updated or added by different components during multi-step initialization.
 
 This project provides a simple initialization routine for Vault in server mode, returning control over the vault data lifecycle to the developer.
 
