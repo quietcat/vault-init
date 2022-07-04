@@ -11,7 +11,7 @@ After vault container startup, if vault data is not present the vault is initial
 
 The unlock key and root access token are saved in `./vault-data/keys.json`
 
-All vault data is saved in `./vault-date/`, thus stopping and even deleting the vault container with `docker-compose down` will not destroy the vault data or change the root key.
+All vault data is saved in `./vault-data/`, thus stopping and even deleting the vault container with `docker-compose down` will not destroy the vault data or change the root key.
 
 ## Configuration
 Vault configuration is loaded from `./vault-init/config.hcl`
