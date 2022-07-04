@@ -5,6 +5,7 @@ VAULT_URL="${VAULT_URL:-$VAULT_URL_DEFAULT}"
 
 INITIALIZED=$(curl -s $VAULT_URL/sys/init | jq .initialized)
 KEYS_FILE="/vault-data/keys.json"
+ROOT_TOKEN_FILE="/vault-data/token.txt"
 
 if [ "$INITIALIZED" = "false" ]; then
     echo Initializing vault
@@ -17,6 +18,7 @@ fi
 
 UNSEAL_KEY=$(echo $INIT_DATA | jq -r .keys[0])
 ROOT_TOKEN=$(echo $INIT_DATA | jq -r .root_token)
+echo -n "$ROOT_TOKEN" > $ROOT_TOKEN_FILE
 
 echo Unsealing vault
 unseal_data="{\"key\":\"$UNSEAL_KEY\"}"

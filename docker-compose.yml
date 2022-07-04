@@ -26,3 +26,12 @@ services:
     depends_on:
       vault-init:
         condition: service_completed_successfully
+  example:
+    image: bash:5.1
+    depends_on:
+      vault-init:
+        condition: service_completed_successfully
+    volumes:
+      - ./vault-data:/vault-data
+    command: bash -c 'ROOT_TOKEN=`cat /vault-data/token.txt`; echo "Root token $$ROOT_TOKEN"'
+

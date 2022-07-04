@@ -11,6 +11,8 @@ After vault container startup, if vault data is not present the vault is initial
 
 The unlock key and root access token are saved in `./vault-data/keys.json`
 
+The root token is saved in `./vault-data/token.txt`
+
 All vault data is saved in `./vault-data/`, thus stopping and even deleting the vault container with `docker-compose down` will not destroy the vault data or change the root key.
 
 ## Configuration
@@ -23,4 +25,4 @@ Vault configuration is loaded from `./vault-init/config.hcl`
 To destroy and re-initialize vault, delete the `./vault-data` directory.
 
 ## Access to the root key
-The root token can be accessed from shell as `$(cat ./vault-data/keys.json | jq -r .root-token)`
+The root token can be accessed from shell as ``ROOT_TOKEN=`cat /vault-data/token.txt` ...``
